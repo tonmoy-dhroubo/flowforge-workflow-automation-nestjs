@@ -1,0 +1,73 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps",
+  "monorepo": true,
+  "compilerOptions": {
+    "tsConfigPath": "tsconfig.build.json"
+  },
+  "projects": {
+    "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    },
+    "auth-service": {
+      "type": "application",
+      "root": "apps/auth-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth-service/tsconfig.app.json"
+      }
+    },
+    "workflow-service": {
+      "type": "application",
+      "root": "apps/workflow-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/workflow-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/workflow-service/tsconfig.app.json"
+      }
+    },
+    "trigger-service": {
+      "type": "application",
+      "root": "apps/trigger-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/trigger-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/trigger-service/tsconfig.app.json"
+      }
+    },
+    "orchestrator-service": {
+      "type": "application",
+      "root": "apps/orchestrator-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/orchestrator-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/orchestrator-service/tsconfig.app.json"
+      }
+    },
+    "executor-service": {
+      "type": "application",
+      "root": "apps/executor-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/executor-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/executor-service/tsconfig.app.json"
+      }
+    },
+    "log-service": {
+      "type": "application",
+      "root": "apps/log-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/log-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/log-service/tsconfig.app.json"
+      }
+    }
+  }
+}
