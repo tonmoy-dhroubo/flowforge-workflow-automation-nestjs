@@ -49,6 +49,10 @@ export class OrchestrationService {
       return;
     }
 
+    if (execution.status === 'CANCELLED') {
+      return;
+    }
+
     if (result.status !== 'SUCCESS') {
       execution.status = 'FAILED';
       await this.repo.save(execution);
@@ -90,6 +94,7 @@ export class OrchestrationService {
     const startEvent: ExecutionStartDto = {
       executionId: execution.id,
       workflowId: execution.workflowId,
+      userId: execution.userId,
       stepIndex: execution.currentStep,
       actionType: action.type,
       actionConfig: action.config,

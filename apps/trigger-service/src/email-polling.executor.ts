@@ -58,9 +58,7 @@ export class EmailPollingExecutor {
         lock.release();
       }
     } finally {
-      if (client.connected) {
-        await client.logout();
-      }
+      await client.logout().catch(() => client.close());
     }
   }
 }

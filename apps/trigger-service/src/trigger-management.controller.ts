@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Headers, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Headers, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { TriggerRegistrationDto, JwtUserGuard } from '@flowforge/common';
 import { TriggerService } from './trigger.service';
 
@@ -31,6 +31,7 @@ export class TriggerManagementController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   remove(@Param('id') id: string, @Headers('x-user-id') userId: string) {
     return this.triggerService.delete(id, userId);
   }

@@ -10,7 +10,7 @@ export class WorkflowClient {
   private readonly baseUrl: string;
 
   constructor(private readonly http: HttpService, config: ConfigService) {
-    this.baseUrl = config.get('WORKFLOW_SERVICE_URL', 'http://localhost:8082/api/v1');
+    this.baseUrl = config.get('WORKFLOW_SERVICE_API_URL') ?? config.get('WORKFLOW_SERVICE_URL', 'http://localhost:8082/api/v1');
   }
 
   async fetchWorkflow(workflowId: string, userId: string): Promise<WorkflowResponseDto | null> {

@@ -9,6 +9,7 @@ import { KafkaService } from '@flowforge/common';
 import { ExecutionStartProducer } from './execution-start.producer';
 import { TriggerEventConsumer } from './trigger-event.consumer';
 import { ExecutionResultConsumer } from './execution-result.consumer';
+import { ExecutionController } from './execution.controller';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { ExecutionResultConsumer } from './execution-result.consumer';
     }),
     TypeOrmModule.forFeature([WorkflowExecution]),
   ],
+  controllers: [ExecutionController],
   providers: [
     KafkaService,
     OrchestrationService,

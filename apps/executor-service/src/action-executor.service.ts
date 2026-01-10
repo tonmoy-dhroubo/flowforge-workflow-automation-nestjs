@@ -18,6 +18,7 @@ export class ActionExecutorService {
       return {
         executionId: startDto.executionId,
         workflowId: startDto.workflowId,
+        userId: startDto.userId,
         stepIndex: startDto.stepIndex,
         status: 'SUCCESS',
         output,
@@ -27,6 +28,7 @@ export class ActionExecutorService {
       return {
         executionId: startDto.executionId,
         workflowId: startDto.workflowId,
+        userId: startDto.userId,
         stepIndex: startDto.stepIndex,
         status: 'FAILURE',
         errorMessage: error.message,

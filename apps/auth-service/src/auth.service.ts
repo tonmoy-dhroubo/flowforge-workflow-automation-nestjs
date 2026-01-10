@@ -73,7 +73,7 @@ export class AuthService {
     user.refreshToken = refreshToken;
     user.refreshTokenExpiryDate = expiry;
     await this.repo.save(user);
-    return { accessToken, refreshToken };
+    return { access_token: accessToken, refresh_token: refreshToken };
   }
 
   private refreshTtlMs() {

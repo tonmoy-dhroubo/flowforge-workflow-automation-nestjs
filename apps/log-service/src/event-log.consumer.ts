@@ -1,7 +1,6 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { KafkaService, KafkaTopics } from '@flowforge/common';
 import { LoggingService } from './logging.service';
-import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class EventLogConsumer implements OnModuleInit {
@@ -21,11 +20,20 @@ export class EventLogConsumer implements OnModuleInit {
   }
 
   private async persist(eventType: string, payload: any) {
+    const isTrigger = eventType === 'TRIGGER';
+    const userId = payload?.userId ?? payload?.user_id ?? null;
+    const workflowId = payload?.workflowId ?? null;
+    const executionId = isTrigger ? null : payload?.executionId ?? null;
+    const eventId = isTrigger ? payload?.eventId ?? null : null;
+    const status = payload?.status ?? (isTrigger ? 'FIRED' : 'INFO');
+
     await this.logging.log({
-      executionId: payload.executionId || payload.eventId || uuid(),
-      workflowId: payload.workflowId,
+      userId,
+      executionId,
+      eventId,
+      workflowId,
       eventType,
-      status: payload.status || 'INFO',
+      status,
       data: payload,
       timestamp: new Date(),
     });

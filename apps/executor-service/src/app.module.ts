@@ -8,9 +8,11 @@ import { GoogleSheetsActionPlugin } from './plugins/google-sheets.plugin';
 import { ActionExecutorService } from './action-executor.service';
 import { ExecutionResultProducer } from './execution-result.producer';
 import { ExecutionStartConsumer } from './execution-start.consumer';
+import { ExecutorController } from './executor.controller';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), HttpModule],
+  controllers: [ExecutorController],
   providers: [
     KafkaService,
     PluginManager,

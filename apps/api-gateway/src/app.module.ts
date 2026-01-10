@@ -11,7 +11,7 @@ import { GatewayService } from './gateway.service';
     HttpModule.register({ timeout: 30000 }),
     JwtModule.registerAsync({
       useFactory: async (config: ConfigService) => ({
-        secret: config.get<string>('JWT_SECRET', 'dev-secret'),
+        secret: config.get<string>('APPLICATION_SECURITY_JWT_SECRET_KEY') ?? config.get<string>('JWT_SECRET', 'dev-secret'),
       }),
       inject: [ConfigService],
     }),

@@ -5,6 +5,7 @@ import { ExecutionLog, ExecutionLogSchema } from './execution-log.schema';
 import { KafkaService } from '@flowforge/common';
 import { LoggingService } from './logging.service';
 import { EventLogConsumer } from './event-log.consumer';
+import { LogController } from './log.controller';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { EventLogConsumer } from './event-log.consumer';
     MongooseModule.forRoot(process.env.MONGO_URI || 'mongodb://localhost:27017/flowforge_logs'),
     MongooseModule.forFeature([{ name: ExecutionLog.name, schema: ExecutionLogSchema }]),
   ],
+  controllers: [LogController],
   providers: [KafkaService, LoggingService, EventLogConsumer],
 })
 export class AppModule {}

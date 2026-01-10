@@ -56,7 +56,7 @@ export class GatewayService {
       const token = this.extractToken(headers['authorization']);
       const payload = this.verifyToken(token);
       if (payload?.user_id) {
-        headers['x-user-id'] = payload.user_id;
+        headers['X-User-Id'] = payload.user_id;
       }
     }
 

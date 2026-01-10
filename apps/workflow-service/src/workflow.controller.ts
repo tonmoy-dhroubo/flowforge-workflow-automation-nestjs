@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards, Headers } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Headers, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { WorkflowService } from './workflow.service';
 import { WorkflowRequestDto } from '@flowforge/common';
 import { JwtUserGuard } from '@flowforge/common';
@@ -33,6 +33,7 @@ export class WorkflowController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   remove(@Param('id') id: string, @Headers('x-user-id') userId: string) {
     return this.workflowService.delete(id, userId);
   }

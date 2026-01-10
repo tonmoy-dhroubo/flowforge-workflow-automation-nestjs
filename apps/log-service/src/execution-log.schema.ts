@@ -4,10 +4,16 @@ import { Document } from 'mongoose';
 @Schema({ collection: 'execution_logs' })
 export class ExecutionLog extends Document {
   @Prop()
-  executionId!: string;
+  userId!: string | null;
 
   @Prop()
-  workflowId!: string;
+  executionId!: string | null;
+
+  @Prop()
+  eventId!: string | null;
+
+  @Prop()
+  workflowId!: string | null;
 
   @Prop()
   eventType!: string;

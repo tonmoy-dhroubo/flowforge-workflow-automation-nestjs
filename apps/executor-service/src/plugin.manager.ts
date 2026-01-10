@@ -14,4 +14,8 @@ export class PluginManager {
   getPlugin(type: string) {
     return this.plugins.get(type.toUpperCase());
   }
+
+  getSupportedTypes() {
+    return Array.from(this.plugins.keys()).sort();
+  }
 }

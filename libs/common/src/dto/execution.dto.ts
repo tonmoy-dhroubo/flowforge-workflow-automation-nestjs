@@ -7,6 +7,9 @@ export class ExecutionStartDto {
   @IsString()
   workflowId!: string;
 
+  @IsString()
+  userId!: string;
+
   @IsNumber()
   stepIndex!: number;
 
@@ -29,6 +32,9 @@ export class ExecutionResultDto {
 
   @IsString()
   workflowId!: string;
+
+  @IsString()
+  userId!: string;
 
   @IsNumber()
   stepIndex!: number;
