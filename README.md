@@ -1,6 +1,6 @@
 # FlowForge NestJS
 
-FlowForge-NestJS is a multi-service workflow automation platform built with NestJS, Kafka, PostgreSQL, and MongoDB. It mirrors the original Spring Boot FlowForge system with equivalent services, APIs, and data schemas. Each service lives under `apps/<service>` and can run independently or side-by-side using Docker.
+FlowForge NestJS is a multi-service workflow automation platform built with NestJS, Kafka, PostgreSQL, and MongoDB. It matches the Spring Boot FlowForge system in services, APIs, and data schemas. Each service lives under `apps/<service>` and can run independently or side-by-side using Docker.
 
 ## Getting Started
 
@@ -24,6 +24,6 @@ FlowForge-NestJS is a multi-service workflow automation platform built with Nest
    npm run start:log-service
    ```
 
-Each Nest app exposes the same endpoints, Kafka topics, and database schemas found in the original FlowForge repo. The API Gateway validates JWTs, adds the `X-User-Id` header, and routes traffic to the appropriate service (workflows, triggers, orchestrator, executor, logs).
+Each service exposes the same endpoints, Kafka topics, and database schemas as the Spring version. The API Gateway validates JWTs, adds the `X-User-Id` header, and routes traffic to workflows, triggers, orchestrator, executor, and logs.
 
 See `docs/ARCHITECTURE.md` for full service breakdown and bootstrapping instructions.
