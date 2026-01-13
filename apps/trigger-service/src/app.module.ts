@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ScheduleModule } from '@nestjs/schedule';
 import { TriggerRegistration } from './trigger.entity';
@@ -10,7 +10,7 @@ import { WebhookTriggerService } from './webhook-trigger.service';
 import { SchedulerTriggerService } from './scheduler-trigger.service';
 import { EmailTriggerService } from './email-trigger.service';
 import { TriggerEventPublisher } from './trigger-event.publisher';
-import { KafkaService, JwtUserGuard } from '@flowforge/common';
+import { KafkaService, JwtUserGuard, PostgresModule } from '@flowforge/common';
 import { ScheduledTriggerExecutor } from './scheduled-trigger.executor';
 import { EmailPollingExecutor } from './email-polling.executor';
 
@@ -18,17 +18,7 @@ import { EmailPollingExecutor } from './email-polling.executor';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ScheduleModule.forRoot(),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        url: config.get('POSTGRES_URL'),
-        schema: config.get('TRIGGER_SCHEMA', 'trigger_service'),
-        entities: [TriggerRegistration],
-        synchronize: true,
-      }),
-    }),
+    PostgresModule.forRoot([TriggerRegistration], 'trigger_service'),
     TypeOrmModule.forFeature([TriggerRegistration]),
   ],
   controllers: [TriggerManagementController, WebhookController],

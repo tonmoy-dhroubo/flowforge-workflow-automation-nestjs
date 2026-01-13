@@ -1,5 +1,4 @@
-/node_modules
-/dist
-/.env
-/.DS_Store
-apps/*/dist
+node_modules/
+dist/
+.run/
+.env
