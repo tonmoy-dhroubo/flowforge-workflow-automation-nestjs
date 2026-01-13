@@ -41,6 +41,15 @@ Defaults align with the shared local DB settings:
 - User: `dev`
 - Password: `devpass`
 
+## Bootstrap (Spring parity)
+
+```bash
+docker compose up -d
+./db/setup_db.sh
+./run-all.sh
+./status-all.sh
+```
+
 Each service exposes the same endpoints, Kafka topics, and database schemas as the Spring version. The API Gateway validates JWTs, adds the `X-User-Id` header, and routes traffic to workflows, triggers, orchestrator, executor, and logs.
 
 See `docs/ARCHITECTURE.md` for full service breakdown and bootstrapping instructions.
